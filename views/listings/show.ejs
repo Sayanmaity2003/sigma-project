@@ -72,7 +72,7 @@
 
                             
                             <form method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" class="mb-3">
-                                    <%if(currUser.username===review.author.username){%>
+                                    <%if(currUser && currUser.username===review.author.username){%>
                                         <button class="btn btn-sm btn-dark">Delete</button>
                                     <%}%>
                             </form>
