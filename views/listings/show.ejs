@@ -67,12 +67,12 @@
                             <div class="card-body">
                                 <h5 class="card-title color-only">@<%=review.author.username%></h5>
                                 <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
-                                <p class="card-text color-only"><%=review.comment%></p>
+                                <p class="card-text color-only mb-3"><%=review.comment%></p>
                             </div>
 
                             
                             <%if(currUser.username===review.author.username){%>
-                                <form method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" class="mb-3 mt-3">
+                                <form method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" class="mb-3">
                                     <button class="btn btn-sm btn-dark">Delete</button>
                                 </form>
                             <%}%>
