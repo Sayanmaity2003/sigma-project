@@ -61,17 +61,21 @@
             <hr>
             <%if(listing.reviews.length>0){%>
                 <div class="row">
-                    <p><b>All Reviews</b></p>
+                    <p><b class="color-only">All Reviews</b></p>
                     <%for(review of listing.reviews){%>
-                        <div class="card col-5 ms-3 mb-3">
+                        <div class="card col-5 ms-3 mb-3 bgcolor-only">
                             <div class="card-body">
-                                <h5 class="card-title">@<%=review.author.username%></h5>
+                                <h5 class="card-title color-only">@<%=review.author.username%></h5>
                                 <p class="starability-result card-text" data-rating="<%=review.rating%>"></p>
-                                <p class="card-text"><%=review.comment%></p>
+                                <p class="card-text color-only"><%=review.comment%></p>
                             </div>
-                            <form method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" class="mb-3">
-                                <button class="btn btn-sm btn-dark">Delete</button>
-                            </form>
+
+                            
+                            <%if(currUser.username===review.author.username){%>
+                                <form method="POST" action="/listings/<%=listing._id%>/reviews/<%=review._id%>?_method=DELETE" class="mb-3 mt-3">
+                                    <button class="btn btn-sm btn-dark">Delete</button>
+                                </form>
+                            <%}%>
                         </div>
                     <%}%>
                 </div>
