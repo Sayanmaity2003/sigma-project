@@ -1,0 +1,143 @@
+<%layout("/layouts/boilerplate")-%>
+
+<div id="filters" class="options">
+
+    <a class="nav-link" href="/listings/" >
+        <div class="filter">
+             <div><i class="fa-solid fa-house nav-icon" ></i></div>
+            <p>ALL</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+    
+    <a class="nav-link" href="/listings/category?q=Trending">
+        <div class="filter">
+            <div><i class="fa-solid fa-fire nav-icon"></i></div>
+            <p>Trending</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+    <a class="nav-link" href="/listings/category?q=Rooms">
+        <div class="filter">
+            <div><i class="fa-solid fa-bed nav-icon"></i></div>
+            <p>Rooms</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+    
+
+    <a class="nav-link" href="/listings/category?q=Top Cities">
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain-city nav-icon"></i></div>
+            <p>Top Cities</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+    <a class="nav-link" href="/listings/category?q=Mountains">
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain nav-icon"></i></div>
+            <p>Mountains</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+    <a class="nav-link" href="/listings/category?q=Castles">
+        <div class="filter" name="Castles">
+            <div><i class="fa-brands fa-fort-awesome nav-icon"></i></div>
+            <p>Castles</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+    <a class="nav-link" href="/listings/category?q=Amazing Pools">
+        <div class="filter">
+            <div><i class="fa-solid fa-person-swimming nav-icon"></i></div>
+            <p>Amazing Pools</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+    <a class="nav-link" href="/listings/category?q=Camping">
+        <div class="filter">
+            <div><i class="fa-solid fa-campground nav-icon"></i></div>
+            <p>Camping</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+    <a class="nav-link" href="/listings/category?q=Farms">
+        <div class="filter">
+            <div><i class="fa-solid fa-cow nav-icon"></i></div>
+            <p>Farms</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+    <a class="nav-link" href="/listings/category?q=Arctic">
+        <div class="filter">
+            <div><i class="fa-solid fa-snowflake nav-icon"></i></div>
+            <p>Arctic</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+    <a class="nav-link" href="/listings/category?q=Domes">
+        <div class="filter">
+            <div><i class="fa-solid fa-igloo nav-icon"></i></div>
+            <p>Domes</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+
+    <a class="nav-link" href="/listings/category?q=Beach">
+        <div class="filter">
+            <div><i class="fa-solid fa-umbrella-beach nav-icon"></i></div>
+            <p>Beach</p>
+            <div class="nav_line"></div>
+        </div>
+    </a>
+
+
+    <div class="tax-toggle">
+        <div class="form-check form-switch form-check-reverse">
+            <input class="form-check-input tax-btn" type="checkbox" id="flexSwitchCheckReverse">
+            <label class="form-check-label" for="flexSwitchCheckReverse">Display total after taxes</label>
+        </div>
+    </div>
+</div>
+
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
+    <%for(listing of allListings){%>
+        <a href="/listings/<%=listing._id%>" class="listing-link">
+            <div class="card col listing-card bgdarkcol-only color-only"> 
+                <img src="<%=listing.image.url%>" class="card-img-top" alt="listing_image" style="height: 20rem">
+                <div class="card-img-overlay"></div>
+                <div class="card-body">
+                    <p class="card-text">
+                        <b style="margin: 0.5rem 0 0 0.5rem"><%=listing.title%></b> 
+                        <br>
+                        <% if (listing.price != null) { %>
+                            <p style="margin: 0.5rem">
+                                <%let gst=listing.price*0.18%>
+                                &#8377;<%=listing.price.toLocaleString("en-IN")%>/night
+                                <i class="tax-info"><b>+18%GST</b>=<%=(gst+listing.price).toLocaleString("en-IN")%>/night</i>
+                            </p>
+                        <% } else { %>
+                                Price not available
+                        <% } %>
+                    </p>
+                </div>
+            </div>
+        </a>
+    <%}%>
+</div>
+<script src="/JS/tax-info.js"></script>
+<script src="/JS/filter.js"></script>
+
+
+
+
