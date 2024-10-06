@@ -212,6 +212,7 @@ body{
 #filters{
     display: flex;
     flex-wrap: wrap;
+    /* overflow-x: auto; */
     align-items: center;
     background-color: var(--color-nav-back);
 }
